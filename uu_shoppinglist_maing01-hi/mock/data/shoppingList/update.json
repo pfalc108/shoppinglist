@@ -1,0 +1,18 @@
+{
+  "id": "61e1556d17f0e248baf15f4u",
+  "awid": "583ebf71c50ed33d7c03dda9",
+  "sys": {
+    "cts": "2022-01-14 10:50:21.637Z",
+    "mts": "2022-01-14 10:50:42.542Z",
+    "rev": 0
+  },
+  "uuOwnerIdentity": "28-4322-1",
+  "uuOwnerIdentityName": "Paul Surname",
+  "uuMemberIdentityList": ["28-4322-1"],
+  "uuMemberIdentityNameList": ["Paul Surname"],
+  "name": "Monday shopping list UPDATED",
+  "itemIdList": ["61e1554617f0e248baf15f42"],
+  "archived": false,
+
+  "uuAppErrorMap": {}
+}
