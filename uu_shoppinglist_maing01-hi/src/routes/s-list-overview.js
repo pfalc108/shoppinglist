@@ -3,9 +3,8 @@ import { createVisualComponent, useScreenSize } from "uu5g05";
 import Config from "./config/config.js";
 import { withRoute } from "uu_plus4u5g02-app";
 import RouteBar from "../core/route-bar";
-import SlistProvider from "../core/s-list-overview/list-provider";
-import SListOverview from "../core/s-list-overview/list-overview";
-import darkmodetoggle, { Darkmodetoggle } from "../core/darkmodetoggle";
+import SlistProvider from "../core/s-list-overview/list-provider.js";
+import SListOverview from "../core/s-list-overview/list-overview.js";
 //@@viewOff:imports
 
 //@@viewOn:constants

@@ -4,6 +4,7 @@ import Uu5TilesElements from "uu5tilesg02-elements";
 import Uu5Elements from "uu5g05-elements";
 import Config from "./config/config.js";
 import CreateForm from "./create-form.js";
+import ListXyChart from "./list-xy-chart";
 //@@viewOff:imports
 
 //@@viewOn:constants
@@ -31,7 +32,6 @@ const ListTile = createVisualComponent({
 
   render(props) {
     //@@viewOn:private
-    const { a } = Uu5Elements.useSpacing();
     const { data } = props;
     const [open, setOpen] = useState(false);
     const [open2, setOpen2] = useState(false);
@@ -52,19 +52,31 @@ const ListTile = createVisualComponent({
         return [];
       }
     };
+    function getRandomInteger(max) {
+      const randomDecimal = Math.random();
+      const scaledRandom = randomDecimal * max + 1;
+      const checked = Math.floor(scaledRandom);
+      const unchecked = max - checked;
+      return {
+        checked: checked,
+        unchecked: unchecked,
+        items: "yes"
+      }
+    }
     //@@viewOff:private
 
     //@@viewOn:interface
     //@@viewOff:interface
 
     //@@viewOn:render
-
+console.log(props);
     return (
       <Uu5TilesElements.Tile
         header={<>{props.data.data.name}</>}
         actionList={ownership(props)}
         displayActionList={true}
       >
+        { props.SLDataList.state === "ready" ? (<ListXyChart data={ getRandomInteger(data.data.itemIdList.length) } />) : (null) }
         <Uu5Elements.Text significance="subdued" colorScheme="building" category="story" segment="body" type="minor">
           <Lsi lsi={{ cs: "Vlastník", en: "Owner"}} />:{" "}
         </Uu5Elements.Text>

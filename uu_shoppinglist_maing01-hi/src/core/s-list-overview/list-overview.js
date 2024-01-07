@@ -7,6 +7,7 @@ import Uu5TilesElements from "uu5tilesg02-elements";
 import Config from "./config/config.js";
 import ListTile from "./list-tile";
 import CreateForm from "./create-form";
+import ListPieChart from "./list-pie-chart";
 
 //@@viewOff:imports
 
@@ -14,9 +15,6 @@ import CreateForm from "./create-form";
 //@@viewOff:constants
 
 //@@viewOn:css
-const Css = {
-  main: () => Config.Css.css({}),
-};
 //@@viewOff:css
 
 //@@viewOn:helpers
@@ -46,7 +44,6 @@ const ListOverview = createVisualComponent({
     //@@viewOn:render
     const [activeFilterList, setActiveFilterList] = useState([{ key: "archived", value: [true] }]);
     const DATA = props.SLDataList.data;
-    console.log(DATA);
     const FILTER_DEFINITION_LIST = [
       {
         key: "archived",
@@ -66,12 +63,17 @@ const ListOverview = createVisualComponent({
       { value: "name", label: "Název:" },
       { value: "owner", label: "Vlastník:" },
     ];
-
     const [open, setOpen] = useState(false);
-
+console.log(props.SLDataList);
     return (
       <>
         <>
+          { props.SLDataList.state === "ready" ? (<ListPieChart data={ props.SLDataList.data.map(item => ({
+            name: item.data.name,
+            items: item.data.itemIdList.length
+          }))
+            } />) : (null)
+          }
           {/* Controller provider for filtering Shopping Lists */}
           <Uu5Tiles.ControllerProvider
             data={DATA}
@@ -80,6 +82,7 @@ const ListOverview = createVisualComponent({
             onFilterChange={(e) => setActiveFilterList(e.data.filterList)}
             serieList={SERIE_LIST}
           >
+
             <CreateForm open={open} onClose={() => setOpen(false)} SLDataList={props.SLDataList} update={false} data={props.data} user={props.user} itemId={0} defaultText=""
                         header={<Lsi lsi={{ cs: "Vytvořit nový nákupní seznam", en: "Create new shopping list" }}/>}/>
             {/* Grid to display Shopping Lists including Filter for non-Archived only */}
